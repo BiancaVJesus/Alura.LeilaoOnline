@@ -4,12 +4,24 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Xunit;
 using Alura.LeilaoOnline.Selenium.Helpers;
+using Alura.LeilaoOnline.Selenium.Fixtures;
 
 
-namespace Alura.LeilaoOnline.Selenium
+namespace Alura.LeilaoOnline.Selenium.Testes
 {
-    public class AoNavegarParaHome
+    public class AoNavegarParaHome : IClassFixture<TestFixture>
     {
+
+        private IWebDriver driver;
+
+        // setup
+
+        public AoNavegarParaHome(TestFixture fixture)
+        {
+            driver = fixture.Driver;
+        }
+
+
         //Em C#, [Fact] é um atributo usado no framework de testes xUnit. Ele serve para marcar um método como um teste unitário que não recebe parâmetros.
 
         [Fact]
@@ -17,9 +29,9 @@ namespace Alura.LeilaoOnline.Selenium
         {
             //arrange 
 
-            //IWebDriver driver = new DriverManager().SetUpDriver(new ChromeConfig());
 
-            IWebDriver driver = new ChromeDriver(TestHelpers.PastaDoExecutavel);
+            //obs: mudou-se o arrange de local, tornando - o SETUP para que não seja necessário inicializarmos em todos os testes de uma só vez
+
 
             //act
             driver.Navigate().GoToUrl("http://localhost:5000");
@@ -29,15 +41,14 @@ namespace Alura.LeilaoOnline.Selenium
         }
 
 
-
-
+        [Fact]
         public void DadoChromeAbertoDeveMostrarProximosLeiloesNaPagina()
         {
             //arrange 
 
-            //IWebDriver driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));.SetUpDriver(new ChromeConfig());
 
-            IWebDriver driver = new ChromeDriver(TestHelpers.PastaDoExecutavel);
+            //obs: mudou-se o arrange de local, tornando - o SETUP para que não seja necessário inicializarmos em todos os testes de uma só vez
+
 
             //act
             driver.Navigate().GoToUrl("http://localhost:5000");

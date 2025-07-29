@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+// teste qualquer para testar a collection fixture
+
 namespace Alura.LeilaoOnline.Selenium.Testes
 {
 

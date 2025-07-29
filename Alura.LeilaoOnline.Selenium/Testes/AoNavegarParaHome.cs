@@ -9,7 +9,11 @@ using Alura.LeilaoOnline.Selenium.Fixtures;
 
 namespace Alura.LeilaoOnline.Selenium.Testes
 {
-    public class AoNavegarParaHome : IClassFixture<TestFixture>
+
+    [Collection("Chrome Driver")]
+
+   
+    public class AoNavegarParaHome  
     {
 
         private IWebDriver driver;

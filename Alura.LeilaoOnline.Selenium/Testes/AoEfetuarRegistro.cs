@@ -1,5 +1,6 @@
 ﻿using Alura.LeilaoOnline.Selenium.Fixtures;
 using OpenQA.Selenium;
+using OpenQA.Selenium.DevTools.V136.Overlay;
 
 namespace Alura.LeilaoOnline.Selenium.Testes
 {
@@ -55,8 +56,6 @@ namespace Alura.LeilaoOnline.Selenium.Testes
 
         }
 
-
-
             //utilizando theory que é um teste parâmetrizado e o inline data que é usado para fornecer os valores dos parâmetros do teste. 
 
             [Theory]
@@ -105,6 +104,26 @@ namespace Alura.LeilaoOnline.Selenium.Testes
                 Assert.Contains("section-registro", driver.PageSource);
 
             }
+
+          [Fact]
+          public void DadoNomeEmBrancoDeveMostrarMensagemDeErro()
+        {
+            //arrange
+            driver.Navigate().GoToUrl("http://localhost:5000");
+
+            //botão de registro
+            var botaoRegistro = driver.FindElement(By.Id("btnRegistro"));
+
+            //act
+            botaoRegistro.Click();
+
+            //assert
+            Assert.Contains("The Nome field is required.", driver.PageSource);
+
+
         }
+
+
+    }
     }
 

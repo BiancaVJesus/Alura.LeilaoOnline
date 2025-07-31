@@ -140,8 +140,7 @@ namespace Alura.LeilaoOnline.Selenium.Testes
 
             //assert
             IWebElement elemento = driver.FindElement(By.CssSelector("span#Nome-error"));
-            Assert.True(elemento.Displayed);
-        
+            Assert.Equal("The Nome field is required.", elemento.Text);        
         }
 
         [Fact]
@@ -163,7 +162,8 @@ namespace Alura.LeilaoOnline.Selenium.Testes
 
             //assert
             IWebElement elemento = driver.FindElement(By.CssSelector("span#Email-error"));
-            Assert.True(elemento.Displayed);
+            Assert.Equal("Please enter a valid email address.", elemento.Text);
+
 
         }
     }
